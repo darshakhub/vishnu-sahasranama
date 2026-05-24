@@ -109,6 +109,11 @@ function renderShlokas(shlokas) {
     s += `    forKids: "${escJs(e.forKids || '')}",\n`;
     s += `    gujarati: "${escJs(e.gujarati || '')}",\n`;
     s += `    hindi: "${escJs(e.hindi || '')}",\n`;
+    if (e.names && e.names.length > 0) {
+      s += `    names: [${e.names.map(n => '"' + escJs(n) + '"').join(', ')}]\n`;
+    } else {
+      s += '    names: []\n';
+    }
     s += '  },\n';
   }
   s += '];\n';
