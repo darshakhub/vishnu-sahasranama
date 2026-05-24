@@ -1,0 +1,7 @@
+node_modules/
+test-results/
+*.tmp
+*.log
+*.bak
+.gujarati_translate_cache.json
+.hindi_translate_cache.json
