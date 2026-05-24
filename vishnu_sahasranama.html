@@ -366,15 +366,12 @@
   }
 
   .tab-panel {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    display: none;
+    height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
     padding: 16px 32px 28px;
-    display: none;
+    box-sizing: border-box;
   }
 
   .tab-panel.active { display: block; }
@@ -679,6 +676,20 @@
   }
 
   .dict-search-bar input:focus { border-color: var(--gold); }
+
+  #dictSearch {
+    background: rgba(255,255,255,0.06) !important;
+    border: 1.5px solid rgba(200,148,26,0.5) !important;
+    box-shadow: 0 0 0 0 transparent;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  #dictSearch:focus {
+    border-color: var(--gold) !important;
+    box-shadow: 0 0 0 3px rgba(200,148,26,0.15);
+  }
+  #dictSearch::placeholder {
+    color: rgba(245,200,66,0.45);
+  }
 
   .dict-filter-btns {
     display: flex;
@@ -1940,15 +1951,15 @@
 
       <!-- DICTIONARY PANEL -->
       <div class="tab-panel" id="panel-dictionary">
-        <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;flex-wrap:wrap;">
-          <div class="dict-filter-btns" style="margin-bottom:0;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap;">
+          <div class="dict-filter-btns" style="margin-bottom:0;flex-shrink:0;">
             <button class="filter-btn active" onclick="filterDictType('all', this)">All Words</button>
             <button class="filter-btn" onclick="filterDictType('noun', this)">Nouns</button>
             <button class="filter-btn" onclick="filterDictType('adj', this)">Adjectives</button>
             <button class="filter-btn" onclick="filterDictType('verb', this)">Verbs</button>
             <button class="filter-btn" onclick="filterDictType('root', this)">Root Words</button>
           </div>
-          <input type="text" id="dictSearch" placeholder="🔍  Search in Sanskrit, English, or meaning..." oninput="filterDict(this.value)" style="flex:1;min-width:200px;background:rgba(200,148,26,0.08);border:1px solid rgba(200,148,26,0.3);border-radius:10px;padding:8px 14px;color:#FFF8E7;font-family:'Open Sans','Noto Sans Devanagari',sans-serif;font-size:13px;outline:none;">
+          <input type="text" id="dictSearch" placeholder="🔍 Search…" oninput="filterDict(this.value)" style="flex:1;min-width:180px;background:rgba(200,148,26,0.08);border:1.5px solid rgba(200,148,26,0.4);border-radius:10px;padding:8px 14px;color:#FFF8E7;font-family:'Open Sans','Noto Sans Devanagari',sans-serif;font-size:13px;outline:none;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='rgba(200,148,26,0.4)'">
         </div>
         <div class="dict-grid" id="dictGrid"></div>
       </div>
